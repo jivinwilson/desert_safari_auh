@@ -1,0 +1,1137 @@
+<title>Desert Safari AUH</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Desert safaris from Abu Dhabi: dune bashing, sunset camps, BBQ dinners under the stars and overnight stays in the Empty Quarter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/sunrise-m.webp" media="(max-width:819px)">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/sunrise-l.webp" media="(min-width:820px) and (max-width:1333px), (min-width:820px) and (max-width:2000px) and (max-resolution:1.49dppx)">
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" href="assets/sunrise.webp" media="(min-width:1334px) and (min-resolution:1.5dppx), (min-width:2001px)">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" id="gf" media="print">
+<script>document.getElementById('gf').addEventListener('load',function(){this.media='all'});</script>
+<style>
+/* One fixed camera, one continuous day. The page is the road through it: sunrise, dunes, caravan, camp, stars. */
+:root{
+  --night:#0d0813;
+  --ember:#e5733a;
+  --gold:#e3b25b;
+  --sand:#f6e7cb;
+  --mute:#d9c8ac;
+  --line:rgba(246,231,203,.26);
+  --display:'Bodoni Moda','Didot',Georgia,serif;
+  --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gut-l:max(clamp(16px,4vw,56px),env(safe-area-inset-left,0px));
+  --gut-r:max(clamp(16px,4vw,56px),env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night);-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--night);color:var(--sand);font-family:var(--body);font-size:17px;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;line-height:1.02}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.w{display:inline-block}
+
+/* The camera */
+#stage{position:fixed;inset:0 0 auto 0;height:100lvh;z-index:0;overflow:hidden;background:#3a1a0c center 22%/cover no-repeat url("data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAAAQCACdASowACAAPtlYpEyoJSOiNVgIAQAbCWYAnTKDOB2gf16X/cd4BpjTezrhEtsA7IAWG9f2+KPNlaqRk5r155yz6cuJ73YwAP3c1ox3eImcsXgz0yQWAxRDy7uPrpIX0DRnoFr0FUj55b93mhZVe5Y2BytwUnTsZyMWHZcLS/5yUqlVbRcrlmP/3HPg7j65wQMvLjU4bceTgLrj/mrjQPWaOcRbB69BfKMLzAbF2pG0Rm/VSJEvlGMoKI4Fxc397BiRj0scH8W9h9/ecU41OMwzF/5Ca3uZIQlvGgz1cExjfhQ3ig3PMGbbW82BbkPjAuAqqgj4i0R/64OtQN3HqyQ9KZD3rYTjRKpqYz1qAAAA")}
+#gl,#motes{position:absolute;inset:0;width:100%;height:100%;display:block}
+#motes{pointer-events:none}
+#stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+#stage::after{content:'';position:absolute;inset:auto 0 0 0;height:150px;background:linear-gradient(to bottom,rgba(13,8,19,0),rgba(13,8,19,.5));pointer-events:none}
+#dim{position:absolute;inset:0;background:var(--night);opacity:0;pointer-events:none}
+#stage.gl #dim,#stage.gl #scrim,#stage.gl::after{display:none}
+.js-rise .rise{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.js-rise .rise.in{opacity:1;transform:none}
+.js-rise .g-run .rise .g-media,.js-rise .g-split .rise .g-media{transform:scale(1.1);transition:transform 1.8s var(--ease)}
+.js-rise .g-run .rise.in .g-media,.js-rise .g-split .rise.in .g-media{transform:none}
+main,footer{position:relative;z-index:1}
+
+/* Nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:calc(22px + env(safe-area-inset-top,0px)) 22px;padding-left:var(--gut-l);padding-right:var(--gut-r);transition:transform .6s var(--ease)}
+nav.away{transform:translateY(-110%)}
+.logo{white-space:nowrap;font-family:var(--display);font-style:italic;font-size:1.32rem;letter-spacing:.01em;text-decoration:none;text-shadow:0 1px 18px rgba(13,8,19,.5)}
+.logo b{font-style:normal;font-weight:500;color:var(--gold)}
+nav ul{display:flex;gap:36px;list-style:none}
+.lnk{position:relative;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding-block:8px;background:none;border:0;color:inherit;font-family:inherit;cursor:pointer;text-shadow:0 1px 14px rgba(13,8,19,.6)}
+.lnk::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.lnk:hover::after{transform:scaleX(1);transform-origin:left}
+.lnk.on::after{transform:scaleX(1);background:var(--gold)}
+.navr{display:flex;align-items:center;gap:28px}
+#menuBtn{display:none}
+
+/* Instruments */
+.hud{position:fixed;z-index:15;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:var(--gut-l);right:var(--gut-r);display:flex;justify-content:space-between;align-items:baseline;gap:16px;pointer-events:none;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 1px 8px rgba(13,8,19,.8)}
+.hud time{font-family:var(--display);font-style:italic;font-size:1.3rem;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--gold);text-transform:none;margin-right:16px}
+
+/* Story beats: sticky frames, so the copy holds while the world moves */
+.beat{height:var(--h,180svh);position:relative}
+.frame{position:sticky;top:0;height:100svh;display:flex;padding-block:calc(96px + env(safe-area-inset-top,0px)) calc(84px + env(safe-area-inset-bottom,0px));padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.copy{max-width:min(760px,100%);min-width:0;text-shadow:0 1px 16px rgba(13,8,19,.6)}
+.bl{align-items:flex-end}
+.tr{justify-content:flex-end;align-items:flex-start}
+.ml{align-items:center}
+.c{align-items:center;justify-content:center;text-align:center}
+.kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:20px}
+h1{font-size:clamp(2.6rem,min(8.8vw + 1rem,13vh),9.4rem);letter-spacing:-.025em;line-height:.94}
+h1 em,h2 em{color:#ffdf9f}
+h2{font-size:clamp(2.6rem,6.4vw,6rem);letter-spacing:-.018em}
+h2.giant{font-size:clamp(5rem,19vw,19rem);letter-spacing:-.03em;line-height:.9}
+.lead{max-width:48ch;margin-top:24px;font-size:clamp(1.02rem,1.4vw,1.2rem);font-weight:300;color:var(--sand)}
+.eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:24px}
+#scrim{position:absolute;inset:40% 0 0 0;background:linear-gradient(to bottom,rgba(13,8,19,0),rgba(13,8,19,.62));pointer-events:none}
+.hero .frame{position:sticky}
+.hero .copy{position:relative;max-width:min(1180px,100%)}
+.hero h1{max-width:11ch}
+
+/* Buttons */
+.cta{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;margin-top:32px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:17px 34px;overflow:hidden;isolation:isolate;background:none;border:1px solid var(--gold);color:var(--night);font:600 .76rem var(--body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:color .45s var(--ease)}
+.btn::before{content:'';position:absolute;inset:-1px;z-index:-1;background:var(--gold);transform-origin:bottom;transition:transform .55s var(--ease)}
+.btn:hover::before{transform:scaleY(0)}
+.btn:hover{color:var(--gold)}
+.btn.ghost{border-color:var(--line);color:var(--sand)}
+.btn.ghost::before{transform:scaleY(0);background:var(--sand)}
+.btn.ghost:hover::before{transform:scaleY(1)}
+.btn.ghost:hover{color:var(--night)}
+
+/* Editorial blocks over the darkened photograph */
+.block{padding-block:14svh;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.inner{width:min(1240px,100%);margin-inline:auto}
+.rows{border-top:1px solid var(--line)}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,64px)}
+.row3 h3{font-size:clamp(1.6rem,2.4vw,2.2rem);margin-bottom:12px}
+.row3 p,.xp p,.log p,.note{font-weight:300;color:var(--mute)}
+.row3 article{padding-top:22px;border-top:1px solid var(--line)}
+
+.head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:64px}
+.sub{max-width:50ch;font-weight:300;font-size:1.08rem;color:var(--sand)}
+
+.xp{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2.2fr) minmax(0,2.4fr) minmax(0,1.5fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding-block:34px;border-bottom:1px solid var(--line);transition:background-color .5s,padding .5s var(--ease)}
+.xp:hover{padding-left:16px;background:rgba(227,178,91,.07)}
+.xp .t{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-variant-numeric:tabular-nums}
+.xp h3{font-size:clamp(1.8rem,3vw,2.8rem);transition:color .4s}
+.xp:hover h3{color:var(--gold)}
+.xp h3 small{display:block;font:500 .66rem var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.xp ul{list-style:none;font-size:.94rem}
+
+.log{display:grid;gap:clamp(34px,5vh,60px);max-width:760px}
+.log.right{margin-left:auto}
+.log li{list-style:none;display:grid;grid-template-columns:clamp(84px,10vw,128px) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:baseline}
+.log time,.big-time{font-family:var(--display);font-style:italic;color:var(--gold);font-variant-numeric:tabular-nums}
+.log time{font-size:clamp(1.5rem,2.3vw,2.1rem)}
+.big-time{display:block;font-size:clamp(1.6rem,2.8vw,2.5rem);margin-bottom:16px}
+.log h3{font-size:clamp(1.7rem,2.6vw,2.4rem);margin-bottom:8px}
+.copy p.body{font-weight:300;font-size:1.12rem;margin-top:18px;max-width:46ch}
+.note{font-size:.84rem;margin-top:30px}
+.fact strong{display:block;font:400 clamp(3.4rem,10vw,9.5rem)/.95 var(--display);letter-spacing:-.025em;color:#fff1d2}
+
+/* Gallery */
+[hidden]{display:none!important}
+#gallery .inner{width:100%}
+.g-filters{display:flex;flex-wrap:wrap;gap:4px 30px;margin-bottom:clamp(40px,7vh,84px)}
+.g-filters .lnk[aria-pressed="true"]::after{transform:scaleX(1);background:var(--gold)}
+#gWall{display:grid;gap:clamp(64px,11vh,150px)}
+.g-group{font:italic 400 clamp(1.8rem,3.4vw,3.2rem)/1.05 var(--display);padding-top:22px;border-top:1px solid var(--line)}
+.g-run{display:grid;gap:clamp(14px,2vw,32px);align-items:start}
+.g-col{display:grid;gap:clamp(40px,7vh,88px);min-width:0}
+.g-col:nth-child(2){padding-top:clamp(40px,12vh,140px)}
+.g-col:nth-child(3){padding-top:clamp(0px,5vh,60px)}
+.g-tile{display:block;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:zoom-in}
+.g-frame{display:block;position:relative;overflow:hidden;background:#1a1118}
+.g-media{display:block;width:100%;height:100%}
+.g-frame img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.g-tile:hover img{transform:scale(1.045)}
+.g-play{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;color:var(--sand);filter:drop-shadow(0 2px 14px rgba(13,8,19,.6))}
+.g-cap{display:block;padding-top:14px;min-width:0}
+.g-cat{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.g-title{display:block;font:400 clamp(1.3rem,1.9vw,1.8rem)/1.12 var(--display);margin-top:5px;transition:color .4s}
+.g-tile:hover .g-title{color:var(--gold)}
+.g-desc{display:block;font-weight:300;color:var(--mute);margin-top:12px;max-width:44ch}
+.g-meta{display:block;font-size:.8rem;color:var(--mute);margin-top:6px}
+.g-split .g-tile{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(20px,4vw,64px);align-items:end}
+.g-split.flip .g-tile{grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+.g-split.flip .g-cap{order:-1;text-align:right}
+.g-split.flip .g-desc{margin-left:auto}
+.g-split .g-title{font-size:clamp(2rem,4vw,3.8rem);letter-spacing:-.015em}
+.g-full{margin-left:calc(-1*var(--gut-l));margin-right:calc(-1*var(--gut-r))}
+.g-full .g-frame{max-height:90svh;width:100%}
+.g-full .g-media{height:112%;margin-top:-6%}
+.g-full .g-cap{position:absolute;left:var(--gut-l);right:var(--gut-r);bottom:0;padding-block:90px 30px;background:linear-gradient(to bottom,rgba(13,8,19,0),rgba(13,8,19,.72))}
+.g-full .g-title{font-size:clamp(2.2rem,5.6vw,5.4rem);letter-spacing:-.02em}
+.g-full .g-tile{position:relative}
+
+#lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--night);color:var(--sand);overflow:hidden}
+#lb:not([open]){display:none}
+#lb[open]{display:grid;grid-template-rows:minmax(0,1fr) auto}
+#lb::backdrop{background:var(--night)}
+.lb-stage{position:relative;overflow:hidden;min-height:0;touch-action:pan-y}
+.lb-stage img,.lb-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#lbClose{position:absolute;z-index:2;top:calc(14px + env(safe-area-inset-top,0px));right:var(--gut-r)}
+.lb-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 40px;min-height:112px;padding-block:16px calc(18px + env(safe-area-inset-bottom,0px));padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.lb-bar .g-cap{padding-top:0;flex:1 1 280px}
+.lb-nav{display:flex;align-items:baseline;gap:26px}
+#lbCount{font-size:.76rem;letter-spacing:.14em;font-variant-numeric:tabular-nums;color:var(--mute)}
+
+.follow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(22px,4vw,60px);align-items:center;padding-block:clamp(30px,6vh,56px);border-block:1px solid var(--line)}
+.follow svg{width:clamp(44px,5vw,64px);height:auto;color:var(--gold)}
+.follow p{margin-top:10px;max-width:52ch;font-weight:300}
+@media (max-width:760px){
+  .follow{grid-template-columns:minmax(0,1fr)}
+  .g-split .g-tile,.g-split.flip .g-tile{grid-template-columns:minmax(0,1fr)}
+  .g-split.flip .g-cap{order:0;text-align:left}
+  .g-split.flip .g-desc{margin-left:0}
+}
+
+/* Book */
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,7vw,110px);align-items:start}
+form{display:grid;gap:30px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px}
+label{display:grid;gap:6px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+input,select,textarea{font:inherit;font-size:1.08rem;letter-spacing:0;text-transform:none;color:var(--sand);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:9px 0;width:100%;transition:border-color .3s}
+input:hover,select:hover,textarea:hover{border-color:var(--sand)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold)}
+select option{color:var(--sand);background:var(--night)}
+input::placeholder,textarea::placeholder{color:rgba(246,231,203,.5)}
+textarea{resize:vertical}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.fine{font-size:.84rem;color:var(--mute)}
+.contact{list-style:none;margin-top:44px;display:grid;gap:18px}
+.contact span{display:block;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+footer{padding-block:32px calc(84px + env(safe-area-inset-bottom,0px));padding-left:var(--gut-l);padding-right:var(--gut-r);font-size:.84rem;color:var(--mute)}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;border-top:1px solid var(--line);padding-top:24px}
+details{margin-top:16px}
+summary{cursor:pointer;letter-spacing:.14em;text-transform:uppercase;font-size:.7rem}
+details ul{list-style:none;margin-top:12px;display:grid;gap:5px;font-size:.78rem;overflow-wrap:anywhere}
+
+@media (max-width:980px){
+  .head,.book,.row3{grid-template-columns:minmax(0,1fr);gap:26px}
+  .xp{grid-template-columns:minmax(0,1fr);gap:8px}
+  .xp:hover{padding-left:0;background:none}
+  .xp ul{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:6px}
+  nav ul{position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding-left:var(--gut-l);padding-right:var(--gut-r);background:var(--night);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+  nav.open ul{opacity:1;visibility:visible}
+  nav ul .lnk{font:400 clamp(2.4rem,11vw,3.6rem)/1.1 var(--display);letter-spacing:-.01em;text-transform:none}
+  #menuBtn{display:inline-block}
+  .tr{justify-content:flex-start}
+  .ml{align-items:flex-end}
+}
+@media (max-height:660px){
+  .eyebrow,.hero .cta .ghost{display:none}
+  .lead{font-size:.96rem;margin-top:14px}
+  .hero .cta{margin-top:18px}
+}
+@media (max-height:480px){
+  .lead{display:none}
+  .frame{padding-block:72px 56px}
+}
+@media (max-width:640px){
+  .two{grid-template-columns:minmax(0,1fr)}
+  .block{padding-block:11svh}
+  .log li{grid-template-columns:minmax(0,1fr);gap:2px}
+  .hud .place{display:none}
+  .navr .reserve{display:none}
+  .actions .btn,.cta .btn{flex:1 1 180px}
+}
+@media (hover:none){
+  .btn:hover::before{transform:none}
+  .btn:hover{color:var(--night)}
+  .btn.ghost:hover::before{transform:scaleY(0)}
+  .btn.ghost:hover{color:var(--sand)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<div id="stage" aria-hidden="true">
+  <canvas id="gl"></canvas>
+  <canvas id="motes"></canvas>
+  <div id="scrim"></div>
+  <div id="dim"></div>
+</div>
+
+<nav id="nav" aria-label="Main">
+  <a class="logo" href="#top">Desert Safari <b>AUH</b></a>
+  <ul id="menu">
+    <li><a class="lnk" href="#why">Why Us</a></li>
+    <li><a class="lnk" href="#experiences">Experiences</a></li>
+    <li><a class="lnk" href="#evening">The Evening</a></li>
+    <li id="navGallery" hidden><a class="lnk" href="#gallery">Gallery</a></li>
+    <li><a class="lnk" href="#book">Book</a></li>
+  </ul>
+  <div class="navr">
+    <a class="lnk reserve" href="#book" style="color:var(--gold)">Reserve</a>
+    <button class="lnk" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</nav>
+
+<div class="hud" aria-hidden="true">
+  <span><time id="clock">06:12</time><span id="chap">Sunrise</span></span>
+  <span class="place">24.4539° N &nbsp; 54.3773° E</span>
+</div>
+
+<main>
+  <section id="top" class="hero beat" data-img="0" data-at="06:12" data-name="Sunrise" style="--h:190svh">
+    <div class="frame bl">
+      <div class="copy">
+        <p class="eyebrow">Abu Dhabi &nbsp;·&nbsp; Empty Quarter &nbsp;·&nbsp; Since the first sunset</p>
+        <h1 class="split">Where Abu Dhabi turns to <em>gold.</em></h1>
+        <p class="lead">Private and group desert safaris led by local drivers. Chase the dunes at golden hour, dine by lantern light and sleep under a sky with no city in it.</p>
+        <div class="cta">
+          <a class="btn" href="#book">Plan my safari</a>
+          <a class="btn ghost" href="#experiences">See experiences</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-img="1" data-at="08:30" data-name="Into the dunes">
+    <div class="beat" style="--h:170svh" data-dim=".2">
+      <div class="frame ml">
+        <div class="copy">
+          <p class="kicker">The road ends here</p>
+          <h2 class="split">Past the last fence, the sand <em>takes over.</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="beat" style="--h:170svh" data-dim=".3">
+      <div class="frame bl">
+        <div class="copy fact">
+          <p class="kicker">Liwa, ahead</p>
+          <h2 class="split"><strong>Tal Moreeb</strong></h2>
+          <p class="body">Abu Dhabi's Liwa region holds some of the highest dunes on earth, rising to roughly 300 metres. Ask about our longer Liwa and Empty Quarter journeys for a desert few visitors ever see.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" data-img="2" data-at="15:30" data-name="The caravan">
+    <div class="beat" style="--h:200svh" data-dim=".24">
+      <div class="frame tr">
+        <div class="copy">
+          <p class="kicker">Why travellers return</p>
+          <h2 class="split">Built by people who <em>grew up</em> on this sand.</h2>
+          <p class="body">Small groups, honest pricing and drivers who know which dune to take at which hour.</p>
+        </div>
+      </div>
+    </div>
+    <div class="block" data-dim=".58">
+      <div class="inner row3">
+        <article class="rise"><h3>Local drivers</h3><p>Experienced, licensed desert drivers who read the sand and put safety before spectacle.</p></article>
+        <article class="rise"><h3>Door-to-door</h3><p>Hotel and residence pick-up and drop-off so the only driving you think about is on the dunes.</p></article>
+        <article class="rise"><h3>Made for everyone</h3><p>Gentle routes for families and children, full-throttle runs for thrill seekers. Say the word.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiences" data-img="3" data-at="16:15" data-name="The caravan">
+    <div class="beat" style="--h:130svh"><div class="frame"></div></div>
+    <div class="block" data-dim=".66">
+      <div class="inner">
+        <div class="head">
+          <div>
+            <p class="kicker">Four ways into the sand</p>
+            <h2 class="split">Choose your <em>hour</em> in the desert.</h2>
+          </div>
+          <p class="sub">From a sunrise run to a full night in camp, every safari includes hotel transfer, a 4x4 with an experienced driver and refreshments on arrival.</p>
+        </div>
+        <div class="rows">
+          <article class="xp rise"><span class="t">06:00 – 10:30</span><h3>Morning Safari</h3><p>Cool air, soft light and empty dunes. Ideal for photography and for travellers short on evenings.</p><ul><li>Dune bashing</li><li>Sandboarding</li><li>Camel ride</li></ul></article>
+          <article class="xp rise"><span class="t">15:00 – 21:30</span><h3><small>Most booked</small>Evening Safari &amp; BBQ</h3><p>Dunes at golden hour, then a camp dinner with live Tanoura and belly dance under the stars.</p><ul><li>Sunset photo stop</li><li>BBQ dinner</li><li>Henna &amp; shisha</li></ul></article>
+          <article class="xp rise"><span class="t">15:00 – 09:00 next day</span><h3>Overnight Camp</h3><p>Stay in a private tent, wake to sunrise on the dunes and have breakfast before the drive back.</p><ul><li>Dinner &amp; breakfast</li><li>Stargazing</li><li>Private tent</li></ul></article>
+          <article class="xp rise"><span class="t">Flexible</span><h3>Private &amp; VIP</h3><p>Your own 4x4, your own pace. Families, couples, proposals and corporate groups, all arranged around you.</p><ul><li>Private vehicle</li><li>Custom route</li><li>Quad bikes on request</li></ul></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="evening" data-img="4" data-at="17:00" data-name="Last light">
+    <div class="beat" style="--h:170svh">
+      <div class="frame ml">
+        <div class="copy">
+          <p class="kicker">A typical evening</p>
+          <h2 class="split">From last light to <em>first star.</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="block" data-dim=".5">
+      <ol class="inner log" style="padding:0">
+        <li class="rise"><time>15:00</time><div><h3>Pick-up</h3><p>Your driver meets you at your Abu Dhabi hotel or home in an air-conditioned 4x4.</p></div></li>
+        <li class="rise"><time>16:15</time><div><h3>Into the dunes</h3><p>Tyres are let down for grip, then the drive begins: steep crests, long slides and a few held breaths.</p></div></li>
+        <li class="rise"><time>17:45</time><div><h3>Sunset stop</h3><p>Out of the car and onto the ridge. The sand turns from gold to copper to rose in about ten minutes.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section data-img="5" data-at="18:30" data-name="The camp">
+    <div class="beat" style="--h:190svh">
+      <div class="frame tr">
+        <div class="copy">
+          <time class="big-time">18:30</time>
+          <h2 class="split">Camp <em>arrival.</em></h2>
+          <p class="body">Arabic coffee, dates, camel rides, sandboarding, henna painting and falcon photos while the fires are lit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="beat" style="--h:160svh">
+      <div class="frame tr">
+        <div class="copy">
+          <time class="big-time">19:30</time>
+          <h2 class="split">Dinner under <em>lanterns.</em></h2>
+          <p class="body">Grilled meats, fresh salads and vegetarian dishes served at low tables on the sand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-img="6" data-at="20:30" data-name="The fire">
+    <div class="beat" style="--h:190svh">
+      <div class="frame tr">
+        <div class="copy">
+          <time class="big-time">20:30</time>
+          <h2 class="split">Tanoura &amp; <em>stars.</em></h2>
+          <p class="body">Live performance by the fire, then quiet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-img="7" data-at="21:10" data-name="Under the stars">
+    <div class="beat" style="--h:230svh">
+      <div class="frame c">
+        <div class="copy">
+          <h2 class="split giant">Look <em>up.</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="beat" style="--h:150svh">
+      <div class="frame ml">
+        <div class="copy">
+          <time class="big-time">21:30</time>
+          <h2 class="split">Return.</h2>
+          <p class="body">Drop-off at your door, sand still in your shoes.</p>
+          <p class="note">Times are indicative and shift with the season's sunset. Your confirmation will list exact timings.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="gallery" class="block" data-dim=".86" hidden>
+      <div class="inner">
+        <div class="head" id="gHead">
+          <div class="rise">
+            <p class="kicker">Events &amp; experiences</p>
+            <h2>In the <em>desert,</em> as it happened.</h2>
+          </div>
+          <p class="sub rise">Photographs and films from our safaris around Abu Dhabi.</p>
+        </div>
+        <div class="g-filters" id="gFilters" role="group" aria-label="Filter gallery by category"></div>
+        <div id="gWall"></div>
+      </div>
+    </div>
+
+    <div id="follow" class="block" data-dim=".55">
+      <div class="inner follow rise">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="5" width="38" height="38" rx="10"/><circle cx="24" cy="24" r="9"/><circle cx="35" cy="13" r="1.6" fill="currentColor" stroke="none"/></svg>
+        <div>
+          <h2>Follow Our Journey</h2>
+          <p>Desert safaris, sunset photoshoots, camping and horse riding around Abu Dhabi, from tour guide Nadeem Irani.</p>
+        </div>
+        <a class="btn" href="https://www.instagram.com/desert_safari_auh/" target="_blank" rel="noopener">Follow @desert_safari_auh</a>
+      </div>
+    </div>
+
+    <div id="book" class="block" data-dim=".52">
+      <div class="inner book">
+        <div class="rise">
+          <p class="kicker">Reserve your safari</p>
+          <h2>Tell us the <em>day.</em> We'll handle the desert.</h2>
+          <p class="sub" style="margin-top:22px">Send your enquiry and we'll reply with availability and a confirmed price. No payment needed to ask.</p>
+          <ul class="contact">
+            <li><span>Instagram</span><a href="https://www.instagram.com/desert_safari_auh" target="_blank" rel="noopener">@desert_safari_auh</a></li>
+            <li><span>Based in</span>Abu Dhabi, United Arab Emirates</li>
+            <li><span>Hours</span>Bookings answered daily</li>
+          </ul>
+        </div>
+        <form id="form" autocomplete="off" class="rise">
+          <div class="two">
+            <label for="name">Your name<input id="name" placeholder="Full name"></label>
+            <label for="date">Preferred date<input id="date" type="date"></label>
+          </div>
+          <div class="two">
+            <label for="exp">Experience
+              <select id="exp">
+                <option>Evening Safari &amp; BBQ</option>
+                <option>Morning Safari</option>
+                <option>Overnight Camp</option>
+                <option>Private &amp; VIP</option>
+              </select>
+            </label>
+            <label for="pax">Guests<input id="pax" type="number" min="1" max="60" value="2"></label>
+          </div>
+          <label for="msg">Anything we should know
+            <textarea id="msg" rows="2" placeholder="Hotel area, children, dietary needs, celebration…"></textarea>
+          </label>
+          <div class="actions">
+            <a class="btn" id="send" href="https://www.instagram.com/desert_safari_auh" target="_blank" rel="noopener">Send enquiry</a>
+            <button class="btn ghost" type="button" id="copy">Copy message</button>
+          </div>
+          <p class="fine" id="status" role="status">Your enquiry opens in a chat with us.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="lb" aria-label="Photo viewer">
+  <button class="lnk" id="lbClose" type="button" autofocus>Close</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <div class="lb-bar">
+    <div class="g-cap" id="lbCap" aria-live="polite"></div>
+    <div class="lb-nav">
+      <span id="lbCount"></span>
+      <button class="lnk" id="lbPrev" type="button">Previous</button>
+      <button class="lnk" id="lbNext" type="button">Next</button>
+    </div>
+  </div>
+</dialog>
+
+<footer data-dim=".52">
+  <div class="ft">
+    <span>© <span id="yr">2026</span> Desert Safari AUH · Abu Dhabi</span>
+    <span>Dune bashing · Camps · Private tours</span>
+  </div>
+  <details>
+    <summary>Photo credits</summary>
+    <ul>
+      <li>Sunrise and ridge: Thomas Fuhrmann, Erg Chebbi, <a href="https://commons.wikimedia.org/wiki/File:Erg_Chebbi_sunset.jpg" target="_blank" rel="noopener">1</a>, <a href="https://commons.wikimedia.org/wiki/File:Erg_Chebbi_in_the_evening_light.jpg" target="_blank" rel="noopener">2</a>, CC BY-SA 4.0</li>
+      <li>Caravan: Merzougaloisirs, <a href="https://commons.wikimedia.org/wiki/File:Cavalier_de_chameaux_au_passage_dans_une_dune_de_sable_au_Maroc.jpg" target="_blank" rel="noopener">source</a>, CC BY-SA 4.0</li>
+      <li>Riders: Fbrandao.1963, <a href="https://commons.wikimedia.org/wiki/File:Vacations_-_Camel_ride_in_Sahara_Desert_(Morroco).jpg" target="_blank" rel="noopener">source</a>, CC BY-SA 4.0</li>
+      <li>Last light: NPS / Debra Miller, Great Sand Dunes, <a href="https://commons.wikimedia.org/wiki/File:Dunes_at_sunset_along_the_southern_edge_of_the_dune_field_in_Great_Sand_Dunes_National_Park._NPS-Debra_Miller_(18659276586).jpg" target="_blank" rel="noopener">source</a>, public domain</li>
+      <li>Tent: Cindy Chen, <a href="https://commons.wikimedia.org/wiki/File:Glamping_(Unsplash).jpg" target="_blank" rel="noopener">source</a>, CC0</li>
+      <li>Campfire: twiga-swala, Wadi Rum, <a href="https://commons.wikimedia.org/wiki/File:Bedouin_Campfire_Conversations,_Wadi_Rum.jpg" target="_blank" rel="noopener">source</a>, CC BY-SA 2.0</li>
+      <li>Milky Way: Chrdoerr, Al Quaa, <a href="https://commons.wikimedia.org/wiki/File:Mesmerising_natural_beauty_-_the_milky_way_and_the_desert_at_Al_Quaa.jpg" target="_blank" rel="noopener">source</a>, CC BY-SA 4.0</li>
+      <li>All photographs resized and colour-graded for this site.</li>
+    </ul>
+  </details>
+</footer>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touch = matchMedia('(hover:none)').matches;
+  var phone = innerWidth < 820;
+  var clamp = function(v,a,b){ return Math.min(b, Math.max(a, v)); };
+  var lerp = function(a,b,t){ return a + (b-a)*t; };
+  var smooth = function(t){ return t*t*(3-2*t); };
+
+  // h: horizon (from top). k: ground dolly strength. vx: vanishing point. kind: 0 day, 1 firelight, 2 stars.
+  var SCENES = [
+    {n:'sunrise', hy:.19, h:.245, vx:.32, f0:[.34,.5],  f1:[.33,.44], z:[1.0,1.05],  k:[0,.75], exp:1.03, tint:[1,.97,.92],  haze:.8,  shim:1, kind:0, dust:1},
+    {n:'enter',   h:.24,  vx:.76, f0:[.6,.56],  f1:[.72,.42], z:[1.02,1.14], k:[0,.95], exp:.98,  tint:[1,.96,.9],   haze:.7,  shim:1, kind:0, dust:1},
+    {n:'caravan', h:.22,  vx:.6,  f0:[.36,.55], f1:[.63,.68], z:[1.03,1.62], k:[0,.08], exp:.98,  tint:[1,.96,.9],   haze:.55, shim:.6,kind:0, dust:1},
+    {n:'riders',  h:.2,   vx:.5,  f0:[.45,.52], f1:[.6,.52],  z:[1.1,1.2],   k:[0,.06], exp:.96,  tint:[1,.95,.87],  haze:.5,  shim:1, kind:0, dust:.7},
+    {n:'dusk',    h:.16,  vx:.55, f0:[.5,.55],  f1:[.55,.45], z:[1.0,1.1],   k:[0,.5],  exp:.9,   tint:[1,.9,.8],    haze:.35, shim:.3,kind:0, dust:.4},
+    {n:'tent',    h:.8,   vx:.62, f0:[.6,.62],  f1:[.62,.66], z:[1.03,1.24], k:[0,.1],  exp:1,    tint:[1,.99,.97],  haze:0,   shim:0, kind:1, dust:0},
+    {n:'fire',    h:.9,   vx:.4,  f0:[.42,.7],  f1:[.38,.74], z:[1.03,1.14], k:[0,.05], exp:1,    tint:[1,.98,.94],  haze:0,   shim:0, kind:1, ember:1},
+    {n:'night',   h:.87,  vx:.5,  f0:[.6,.55],  f1:[.6,.48],  z:[1.04,1.12], k:[0,.2],  exp:1.08, tint:[.97,.98,1.04],haze:0,  shim:0, kind:2}
+  ];
+  var FRAG = [
+    'precision highp float;',
+    'varying vec2 v;uniform float T,M,E,D,W,S,H,SC,KA,KB;uniform vec2 R;uniform vec3 C;',
+    'uniform sampler2D A,B,N;uniform vec4 XA,XB,GA,GB;',
+    'float n2(vec2 p){return texture2D(N,p*.0078125).r;}',
+    'float fbm(vec2 p){return .62*n2(p)+.38*n2(p*2.1+7.);}',
+    'vec3 scene(sampler2D t,vec4 x,vec4 g,float kind){',
+    ' vec2 p=x.xy+(v-.5)*x.zw;',
+    ' float d=max(0.,(p.y-g.x)/(1.-g.x));float f=1./(1.+g.y*d);',
+    ' p=vec2(g.z,g.x)+(p-vec2(g.z,g.x))*vec2(f,f);',
+    ' if(kind<.5&&S>0.){float b=exp(-pow((p.y-g.x)*24.,2.));p.x+=b*sin(p.y*240.+T*2.6)*.0011*S;}',
+    ' float w=0.;',
+    ' if(kind>1.5){w=1.-smoothstep(.6,.82,p.y);vec2 q=p-vec2(.55,-.35);float a=g.w*w;float cs=cos(a),sn=sin(a);p=vec2(.55,-.35)+vec2(q.x*cs-q.y*sn,q.x*sn+q.y*cs);}',
+    ' vec3 c=texture2D(t,p).rgb;float l=dot(c,vec3(.3,.59,.11));',
+    ' if(kind>.5&&kind<1.5){float m=smoothstep(.35,.9,l)*smoothstep(.04,.3,c.r-c.b);float fl=.5*sin(T*7.)+.5*sin(T*13.3+1.)+n2(vec2(T*3.,1.))-.5;c*=1.+m*fl*.11;}',
+    ' if(kind>1.5){float s=smoothstep(.62,.95,l)*w;c*=1.+s*(n2(p*150.+vec2(T*.9,-T*.7))-.5)*.5;}',
+    ' return c;',
+    '}',
+    'void main(){',
+    ' vec3 a=scene(A,XA,GA,KA),col=a;',
+    ' if(W<1.){float dd=max(0.,(v.y-GA.x)/.75);float e=1.-smoothstep(W*1.5-.5,W*1.5,dd);float l=mix(.2,1.,max(e,W*W));l=dd<=0.?mix(.32,1.,W):l;col=mix(col*vec3(.45,.55,.95),col,l)*l;}',
+    ' if(M>0.){vec3 b=scene(B,XB,GB,KB);float n=fbm(v*vec2(3.2,2.2)+vec2(T*.05,0.));float fr=v.x*.3+n*.7;float e=smoothstep(fr-.14,fr+.14,M*1.28-.14);col=mix(col,b,e);float band=e*(1.-e)*4.;col+=band*vec3(.42,.27,.13)*(1.-KB*.42)*.55;}',
+    ' col*=E*C;col=mix(col,col*col*(3.-2.*col),.28);',
+    ' if(H>0.){float n=fbm(v*vec2(2.2,7.)+vec2(T*.09,T*.012));col+=vec3(.5,.34,.18)*n*n*n*H*.2*smoothstep(.1,.7,v.y);}',
+    ' vec2 u=v-.5;float vg=1.-smoothstep(.34,.86,length(u*vec2(1.05,1.)));col*=mix(.74,1.,vg);',
+    ' col*=(1.-.62*SC*smoothstep(.4,1.,v.y))*(1.-.5*smoothstep(.83,1.,v.y));',
+    ' col=mix(col,vec3(.051,.031,.075),D);',
+    ' col+=(texture2D(N,v*R*.0078125+fract(T*vec2(13.7,7.3))).g-.5)*.05;',
+    ' gl_FragColor=vec4(col,1.);',
+    '}'].join('\n');
+
+  var $ = function(s){ return document.querySelector(s); };
+  var stage = $('#stage'), glc = $('#gl'), motesC = $('#motes'), dimEl = $('#dim'), nav = $('#nav');
+  var scrim = $('#scrim'), hud = $('.hud'), clockEl = $('#clock'), chapEl = $('#chap');
+  var chapters = [].slice.call(document.querySelectorAll('[data-img]'));
+  var dims = [].slice.call(document.querySelectorAll('[data-dim]'));
+  var tops = [], lens = [], dimR = [], times, vh = innerHeight;
+  times = chapters.map(function(c){ var t=c.dataset.at.split(':'); return +t[0]*60 + +t[1]; });
+
+  function measure(){
+    vh = innerHeight;
+    var sy = scrollY;
+    tops = chapters.map(function(c){ return c.getBoundingClientRect().top + sy; });
+    var end = document.documentElement.scrollHeight - vh;
+    lens = tops.map(function(t,i){ return (i < tops.length-1 ? tops[i+1] : end + vh) - t; });
+    dimR = dims.map(function(d){ var r=d.getBoundingClientRect(); return {a:r.top+sy, b:r.bottom+sy, v:r.height ? +d.dataset.dim : 0}; });
+  }
+
+  var gl = null, U = {}, texs = SCENES.map(function(){ return null; });
+  if(!reduce){
+    try{ gl = glc.getContext('webgl',{antialias:false,alpha:false,powerPreference:'high-performance'}); }catch(e){}
+  }
+  function sh(type, src){ var s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; }
+  if(gl){
+    var prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER,'attribute vec2 a;varying vec2 v;void main(){v=vec2(a.x*.5+.5,.5-a.y*.5);gl_Position=vec4(a,0.,1.);}'));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER,FRAG));
+    gl.bindAttribLocation(prog,0,'a');
+    gl.linkProgram(prog);
+    if(!gl.getProgramParameter(prog,gl.LINK_STATUS)) gl = null;
+  }
+  if(gl){
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+    'T M E D W S H SC KA KB R C A B N XA XB GA GB'.split(' ').forEach(function(n){ U[n]=gl.getUniformLocation(prog,n); });
+    gl.uniform1i(U.A,0); gl.uniform1i(U.B,1); gl.uniform1i(U.N,2);
+    var NS = 128, noise = new Uint8Array(NS*NS*4);
+    for(var ni=0;ni<noise.length;ni++) noise[ni] = ni%4===3 ? 255 : Math.random()*256;
+    gl.activeTexture(gl.TEXTURE2);
+    gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,NS,NS,0,gl.RGBA,gl.UNSIGNED_BYTE,noise);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    stage.classList.add('gl');
+    glc.addEventListener('webglcontextlost', function(e){ e.preventDefault(); gl=null; stage.classList.remove('gl'); glc.style.display='none'; initDom(); });
+  } else { glc.style.display='none'; }
+
+  var quality = 1, curW = 0, curH = 0;
+  function size(force){
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if(!force && touch && w===curW && Math.abs(h-curH)<140) return;
+    curW = w; curH = h;
+    var dpr = Math.min(devicePixelRatio||1, phone?1.4:1.5) * quality;
+    if(gl){ glc.width = Math.round(w*dpr); glc.height = Math.round(h*dpr); gl.viewport(0,0,glc.width,glc.height); gl.uniform2f(U.R,glc.width,glc.height); }
+    motesC.width = w; motesC.height = h;
+  }
+
+  var ratio = function(i){ return texs[i] ? texs[i].r : 1.5; };
+  // Matches the preload media queries above so the hero is never fetched twice.
+  var tier = phone ? '-m' : ((devicePixelRatio>=1.5 && innerWidth>1333) || innerWidth>2000) ? '' : '-l';
+  var srcOf = function(i){ return 'assets/'+SCENES[i].n+tier+'.webp'; };
+  var loadState = SCENES.map(function(){ return 0; }), loading = false, pending = [], cur = 0, liveTex = 0, maxTex = phone ? 3 : 5, introDone = false;
+  function want(){
+    if(!gl || loading) return;
+    var order = [cur, cur+1, cur-1, cur+2];
+    for(var o=0;o<order.length;o++){
+      var k = order[o];
+      if(k>=0 && k<SCENES.length && !loadState[k]){ load(k); return; }
+    }
+  }
+  function load(k){
+    loading = true; loadState[k] = 1;
+    var im = new Image();
+    var done = function(src){ pending.push({k:k, src:src}); loading = false; want(); };
+    im.onerror = function(){ loading = false; want(); };
+    im.onload = function(){
+      im.decode().then(function(){ return window.createImageBitmap ? createImageBitmap(im) : im; }).then(done, function(){ done(im); });
+    };
+    im.src = srcOf(k);
+  }
+  function pump(moving){
+    for(var p=0;p<pending.length;p++){
+      var k = pending[p].k;
+      if(moving && k!==cur && k!==cur+1) continue;
+      var src = pending.splice(p,1)[0].src, t = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE3);
+      gl.bindTexture(gl.TEXTURE_2D,t);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,src);
+      texs[k] = {t:t, r:(src.naturalWidth||src.width)/(src.naturalHeight||src.height)};
+      if(src.close) src.close();
+      loadState[k] = 2; liveTex++; dirty = true;
+      if(!introDone){ introDone = true; beginIntro(); }
+      evict();
+      return;
+    }
+  }
+  function evict(){
+    while(liveTex>maxTex){
+      var far = -1, dist = 1;
+      texs.forEach(function(t,k){ var d = k<cur ? (cur-k)*1.5 : k-cur; if(t && d>dist){ dist = d; far = k; } });
+      if(far<0) return;
+      gl.deleteTexture(texs[far].t); texs[far] = null; loadState[far] = 0; liveTex--;
+    }
+  }
+
+  var domImgs = null;
+  function initDom(){
+    domImgs = SCENES.map(function(s,i){
+      var im = document.createElement('img'); im.alt=''; im.decoding='async';
+      im.style.objectPosition = (s.f0[0]*100)+'% '+(s.f0[1]*100)+'%';
+      stage.insertBefore(im, dimEl); return im;
+    });
+    motesC.style.display='none';
+  }
+  if(!gl) initDom();
+
+  function xf(s, p, i){
+    var portrait = curW < curH, as = curW/curH, r = ratio(i);
+    var zv = lerp(s.z[0], s.z[1], p);
+    if(portrait) zv = 1 + (zv-1)*.3 + .02;
+    var sx = as>r ? 1 : as/r, sy = as>r ? r/as : 1;
+    sx/=zv; sy/=zv;
+    var cx = clamp(lerp(s.f0[0],s.f1[0],p), sx/2, 1-sx/2), cy = clamp(s.hy ? s.h+(.5-s.hy)*sy : lerp(s.f0[1],s.f1[1],p), sy/2, 1-sy/2);
+    return [cx,cy,sx,sy];
+  }
+  function pOf(i,y){ return clamp(i===0 ? y/lens[0] : (y-tops[i]+vh)/(lens[i]+vh), 0, 1); }
+
+  var T0 = performance.now(), dawn = reduce ? 1 : 0, lastY = -1, dirty = true, lastImg = -1;
+  var frameN = 0, slowN = 0, slowT = 0, lastT = T0;
+
+  var motes = [];
+  function seedMotes(){
+    var n = phone ? 10 : 36;
+    for(var i=0;i<n;i++) motes.push({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,s:Math.random()*6.28,e:i%3===0});
+  }
+  seedMotes();
+  var mc = motesC.getContext('2d'), motesLive = false;
+  function drawMotes(dust, ember, dt){
+    if(dust<.02 && ember<.02){ if(motesLive){ mc.clearRect(0,0,curW,curH); motesLive = false; } return; }
+    motesLive = true;
+    mc.clearRect(0,0,curW,curH);
+    mc.fillStyle = '#f9dfae';
+    for(var i=0;i<motes.length;i++){
+      var m=motes[i];
+      if(m.e){ m.y -= dt*.00011*m.z; m.x += Math.sin(m.s+m.y*16)*.0006; if(m.y<.2){m.y=1;m.x=.2+Math.random()*.4;} }
+      else { m.x += dt*.000022*m.z; m.y += Math.sin(m.s+m.x*8)*.00016; if(m.x>1){m.x=0;m.y=.2+Math.random()*.8;} }
+      var a = (m.e?ember:dust)*(m.e?.9:.22)*m.z*(m.e?clamp((m.y-.2)*2.2,0,1):1);
+      if(a<.01) continue;
+      mc.globalAlpha=a;
+      mc.fillStyle = m.e ? '#ffae5c' : '#f9dfae';
+      var r=(m.e?1.5:1.3)*m.z;
+      mc.fillRect(m.x*curW,m.y*curH,r,r);
+    }
+    mc.globalAlpha=1;
+  }
+
+  var lastClock='', lastName='';
+  function setUniforms(a,pa,b,pb,m,dim,time){
+    var sa=SCENES[a], sb=SCENES[b], xa=xf(sa,pa,a), xb=xf(sb,pb,b);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D,texs[a].t);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D,texs[b].t);
+    gl.uniform4fv(U.XA,xa); gl.uniform4fv(U.XB,xb);
+    var rotA = sa.kind===2 ? .022*pa + .004*Math.sin(time*.06) : 0;
+    var rotB = sb.kind===2 ? .022*pb + .004*Math.sin(time*.06) : 0;
+    gl.uniform4f(U.GA,sa.h,lerp(sa.k[0],sa.k[1],pa),sa.vx,rotA);
+    gl.uniform4f(U.GB,sb.h,lerp(sb.k[0],sb.k[1],pb),sb.vx,rotB);
+    gl.uniform1f(U.KA,sa.kind); gl.uniform1f(U.KB,sb.kind);
+    gl.uniform1f(U.T,time); gl.uniform1f(U.M,m);
+    gl.uniform1f(U.E,lerp(sa.exp,sb.exp,m)); gl.uniform1f(U.D,dim);
+    gl.uniform1f(U.W,a===0?dawn:1);
+    gl.uniform1f(U.S,reduce||phone?0:lerp(sa.shim,sb.shim,m));
+    gl.uniform1f(U.H,phone?0:lerp(sa.haze,sb.haze,m));
+    gl.uniform3f(U.C,lerp(sa.tint[0],sb.tint[0],m),lerp(sa.tint[1],sb.tint[1],m),lerp(sa.tint[2],sb.tint[2],m));
+  }
+
+  function chapterAt(y){
+    var i=0;
+    for(var c=0;c<tops.length;c++) if(tops[c]-vh*.1<=y) i=c;
+    return i;
+  }
+
+  var intro = {v:reduce?1:0}, lastDim = 0, navY = 0, navAway = false, lastHud = '1', lastDimS = '', lastScrim = '';
+  function frame(now){
+    if(lbOpen){ lastT = now; return; }
+    var dt = now-lastT; lastT = now;
+    if(lenis) lenis.raf(now);
+    var y = scrollY;
+    var moving = Math.abs(y-lastY) > .3;
+    frameN++;
+    if(gl && pending.length) pump(moving);
+    var ambient = !reduce && lastDim < .7 && !(frameN%2);
+    if(!moving && !dirty && !ambient) return;
+    lastY = y; dirty = false;
+
+    if(!reduce){
+      var dy = y-navY;
+      if(Math.abs(dy)>6){
+        var away = dy>0 && y>vh*.7 && !nav.classList.contains('open');
+        if(away!==navAway){ nav.classList.toggle('away',away); navAway = away; }
+        navY = y;
+      }
+    }
+
+    var i = chapterAt(y), n = SCENES.length;
+    if(i!==cur){ cur = i; want(); }
+    var m = i<n-1 ? smooth(clamp((y-(tops[i+1]-vh*.9))/(vh*.8),0,1)) : 0;
+    var d = 0;
+    for(var r=0;r<dimR.length;r++){
+      var q = dimR[r];
+      if(y+vh*.75<q.a || y+vh*.25-q.b>vh*.4) continue;
+      d = Math.max(d, q.v * smooth(clamp((y+vh*.75-q.a)/(vh*.45),0,1)) * (1-smooth(clamp((y+vh*.25-q.b)/(vh*.4),0,1))));
+    }
+    lastDim = d;
+    var sc = 1-clamp(y/(lens[0]*.5),0,1);
+    var hudS = (1-smooth(clamp((d-.3)/.16,0,1))).toFixed(2);
+    if(hudS!==lastHud){ hud.style.opacity = hudS; lastHud = hudS; }
+
+    if(gl){
+      var a=i, b=Math.min(i+1,n-1);
+      while(a>0 && !texs[a]) a--;
+      if(!texs[b]){ b=a; m=0; }
+      if(texs[a]){
+        if(i===0){
+          var sw = clamp(y/(lens[0]*.5),0,1);
+          dawn = Math.min(1, intro.v*.72 + sw*.28);
+        } else dawn = 1;
+        setUniforms(a,pOf(a,y),b,pOf(b,y),m,d,(now-T0)/1000);
+        gl.uniform1f(U.SC,sc);
+        gl.drawArrays(gl.TRIANGLES,0,3);
+        var sa=SCENES[a], sb=SCENES[b];
+        drawMotes(lerp(sa.dust||0,sb.dust||0,m)*intro.v, lerp(sa.ember||0,sb.ember||0,m), Math.min(dt,50));
+      }
+      if(moving && !document.hidden){
+        slowT += dt; slowN++;
+        if(slowN===40){
+          if(slowT/40 > 24 && quality>.55){ quality*=.8; size(true); }
+          slowN=0; slowT=0;
+        }
+      }
+    } else {
+      var dimS = d.toFixed(3), scS = sc.toFixed(3);
+      if(dimS!==lastDimS){ dimEl.style.opacity = dimS; lastDimS = dimS; }
+      if(scS!==lastScrim){ scrim.style.opacity = scS; lastScrim = scS; }
+      if(domImgs) domImgs.forEach(function(im,k){
+        var o = k===i ? 1-m*(i<n-1?0:1) : (k===i+1 ? m : 0);
+        if(k===i+1 && m>0 && !im.src) im.src=srcOf(k);
+        if(k===i && !im.src) im.src=srcOf(k);
+        if(k>i+2) o=0;
+        im.style.opacity = o;
+        if(!reduce && o>0){ var s=SCENES[k]; im.style.transform='scale('+lerp(s.z[0],s.z[1],pOf(k,y)).toFixed(4)+')'; }
+      });
+    }
+
+    var next = Math.min(i+1,n-1), tt = n-1===i ? clamp((y-tops[i])/(vh*3),0,1) : clamp((y-tops[i])/lens[i],0,1);
+    var mins = i===n-1 ? lerp(times[i],21*60+30,tt) : lerp(times[i],times[next],tt);
+    var hm = String(Math.floor(mins/60)).padStart(2,'0')+':'+String(Math.floor(mins%60)).padStart(2,'0');
+    if(hm!==lastClock){ clockEl.textContent = hm; lastClock = hm; }
+    var nm = chapters[i].dataset.name;
+    if(nm!==lastName){ chapEl.textContent = nm; lastName = nm; }
+  }
+
+  var lenis = null;
+  var ST = window.ScrollTrigger;
+  if(!reduce && window.Lenis){
+    lenis = new Lenis({lerp:.13, wheelMultiplier:1, syncTouch:false});
+    if(ST) lenis.on('scroll', function(){ ST.update(); });
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var el = document.querySelector(a.getAttribute('href'));
+    if(!el) return;
+    e.preventDefault();
+    nav.classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded','false'); $('#menuBtn').textContent='Menu';
+    if(lenis) lenis.scrollTo(el,{duration:2.2}); else el.scrollIntoView();
+  });
+  $('#menuBtn').addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open); this.textContent = open ? 'Close' : 'Menu';
+  });
+
+  function words(el){
+    [].slice.call(el.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var f=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(w){
+          if(!w) return;
+          if(/^\s+$/.test(w)) f.appendChild(document.createTextNode(' '));
+          else { var s=document.createElement('span'); s.className='w'; s.textContent=w; f.appendChild(s); }
+        });
+        n.parentNode.replaceChild(f,n);
+      } else if(n.nodeType===1) words(n);
+    });
+  }
+
+  if(window.gsap && ST && !reduce){
+    gsap.registerPlugin(ST);
+    ST.config({ignoreMobileResize:true});
+    document.querySelectorAll(phone ? '.hero .split' : '.split').forEach(words);
+
+    var setupBeat = function(b){
+      var copy = b.querySelector('.copy'); if(!copy) return;
+      var ws = copy.querySelectorAll(phone && !b.classList.contains('hero') ? '.split' : '.w');
+      var rest = [].filter.call(copy.children,function(c){ return !c.classList.contains('split'); });
+      var hero = b.classList.contains('hero');
+      var tl = gsap.timeline({scrollTrigger:{trigger:b,start:hero?'top top':'top 78%',end:'bottom bottom',scrub:true}});
+      if(!hero){
+        tl.fromTo(ws,{yPercent:phone?14:46,opacity:0},{yPercent:0,opacity:1,stagger:.035,duration:.42,ease:'power2.out'},0);
+        if(rest.length) tl.fromTo(rest,{y:26,opacity:0},{y:0,opacity:1,duration:.4,ease:'power2.out'},.08);
+      }
+      tl.to(copy,{y:-46,opacity:0,duration:.42,ease:'power1.in'}, hero ? .45 : '+=1.1');
+    };
+    // One timeline per task keeps startup free of long tasks on slow phones.
+    var beats = [].slice.call(document.querySelectorAll('.beat'));
+    (function nextBeat(){ if(beats.length){ setupBeat(beats.shift()); setTimeout(nextBeat,0); } })();
+
+    var heroCopy = $('.hero .copy');
+    gsap.fromTo(heroCopy.querySelectorAll('.w'),{yPercent:55,opacity:0},{yPercent:0,opacity:1,duration:1.1,stagger:.06,ease:'power3.out',delay:.08});
+    gsap.fromTo([$('.eyebrow'),$('.lead'),$('.cta')],{y:18,opacity:0},{y:0,opacity:1,duration:1,stagger:.14,ease:'power2.out',delay:.6});
+
+  }
+
+  var riser = null;
+  if(!reduce && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js-rise');
+    riser = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); riser.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rise').forEach(function(el){ riser.observe(el); });
+  }
+
+  // Only owner-authorized media belongs here; the section stays hidden while this is empty.
+  // {src, w, h, alt, category, type?:'video', poster?, title?, description?, date?, location?, group?, feature?:'full'|'large'}
+  var GALLERY = [];
+  var lbOpen = false;
+
+  if(GALLERY.length) (function(){
+    var wall = $('#gWall'), filters = $('#gFilters'), lb = $('#lb'), lbStage = $('#lbStage'), lbCap = $('#lbCap');
+    var animate = window.gsap && ST && !reduce, tweens = [], current = GALLERY, active = 'All', at = 0;
+    $('#gallery').hidden = false; $('#navGallery').hidden = false;
+
+    function el(tag, cls, text){
+      var n = document.createElement(tag);
+      if(cls) n.className = cls;
+      if(text != null) n.textContent = text;
+      return n;
+    }
+    function caption(it, full){
+      var c = el('span','g-cap');
+      if(it.category) c.appendChild(el('span','g-cat',it.category));
+      if(it.title) c.appendChild(el('span','g-title',it.title));
+      var meta = [it.date,it.location].filter(Boolean).join(' · ');
+      if(full && it.description) c.appendChild(el('span','g-desc',it.description));
+      if(meta) c.appendChild(el('span','g-meta',meta));
+      return c;
+    }
+    function tile(it, withText){
+      var b = el('button','g-tile'); b.type = 'button';
+      b.setAttribute('aria-label', (it.type==='video'?'Play film: ':'View photo: ') + (it.title || it.alt));
+      var f = el('span','g-frame'), m = el('span','g-media'), im = el('img');
+      f.style.aspectRatio = it.w+'/'+it.h;
+      im.src = it.type==='video' ? it.poster : it.src;
+      im.alt = it.alt || ''; im.width = it.w; im.height = it.h;
+      im.loading = 'lazy'; im.decoding = 'async';
+      m.appendChild(im); f.appendChild(m);
+      if(it.type==='video'){
+        var p = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        p.setAttribute('viewBox','0 0 68 68'); p.setAttribute('class','g-play'); p.setAttribute('aria-hidden','true');
+        p.innerHTML = '<circle cx="34" cy="34" r="32" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M28 22l18 12-18 12z" fill="currentColor"/>';
+        f.appendChild(p);
+      }
+      b.appendChild(f); b.appendChild(caption(it, withText));
+      b.addEventListener('click', function(){ open(current.indexOf(it)); });
+      return b;
+    }
+    function cols(){ return innerWidth>=1000 ? 3 : innerWidth>=520 ? 2 : 1; }
+    var WEIGHTS = {1:[1],2:[1.15,1],3:[1.25,1,1.1]};
+    function flush(run){
+      if(!run.length) return;
+      var n = cols(), w = WEIGHTS[n], box = el('div','g-run'), heights = w.map(function(){ return 0; });
+      box.style.gridTemplateColumns = w.map(function(x){ return 'minmax(0,'+x+'fr)'; }).join(' ');
+      var cs = w.map(function(){ var c = el('div','g-col'); box.appendChild(c); return c; });
+      run.forEach(function(it){
+        var k = heights.indexOf(Math.min.apply(null,heights));
+        cs[k].appendChild(tile(it,false));
+        heights[k] += (it.h/it.w)*w[k] + .22;
+      });
+      wall.appendChild(box);
+      run.length = 0;
+    }
+    function reveal(){
+      if(riser) wall.querySelectorAll('.g-tile').forEach(function(t){ t.classList.add('rise'); riser.observe(t); });
+      if(!animate) return;
+      tweens.forEach(function(t){ if(t.scrollTrigger) t.scrollTrigger.kill(); t.kill(); });
+      tweens = [];
+      wall.querySelectorAll('.g-full .g-media').forEach(function(m){
+        tweens.push(gsap.fromTo(m,{yPercent:-5},{yPercent:5,ease:'none',scrollTrigger:{trigger:m.parentNode,start:'top bottom',end:'bottom top',scrub:true}}));
+      });
+      ST.refresh();
+    }
+    function render(){
+      wall.textContent = '';
+      var run = [], group = null, splits = 0;
+      current.forEach(function(it){
+        if(it.group && it.group!==group){ flush(run); group = it.group; wall.appendChild(el('h3','g-group',group)); }
+        if(it.feature==='full'){ flush(run); var a = el('div','g-full'); a.appendChild(tile(it,true)); wall.appendChild(a); }
+        else if(it.feature==='large'){ flush(run); var s = el('div','g-split'+(splits++%2?' flip':'')); s.appendChild(tile(it,true)); wall.appendChild(s); }
+        else run.push(it);
+      });
+      flush(run);
+      reveal();
+    }
+
+    var cats = GALLERY.map(function(i){ return i.category; }).filter(function(c,i,a){ return c && a.indexOf(c)===i; });
+    filters.hidden = cats.length<2;
+    ['All'].concat(cats).forEach(function(c){
+      var b = el('button','lnk',c); b.type='button'; b.setAttribute('aria-pressed',c==='All');
+      b.addEventListener('click',function(){
+        if(c===active) return;
+        active = c;
+        filters.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed',x===b); });
+        current = c==='All' ? GALLERY : GALLERY.filter(function(i){ return i.category===c; });
+        var top = filters.getBoundingClientRect().top + scrollY - 110;
+        var swap = function(){ render(); if(scrollY>top){ if(lenis) lenis.scrollTo(top,{immediate:true}); else scrollTo(0,top); } };
+        if(animate) gsap.to(wall,{opacity:0,duration:.3,ease:'power1.in',onComplete:function(){ swap(); gsap.to(wall,{opacity:1,duration:.6,ease:'power2.out'}); }});
+        else swap();
+      });
+      filters.appendChild(b);
+    });
+
+    function show(i, dir){
+      at = (i+current.length)%current.length;
+      var it = current[at], node;
+      lbStage.textContent = '';
+      if(it.type==='video'){
+        node = el('video'); node.controls = true; node.playsInline = true; node.preload = 'metadata';
+        node.poster = it.poster; node.src = it.src;
+        node.setAttribute('aria-label', it.title || it.alt);
+      } else {
+        node = el('img'); node.src = it.src; node.alt = it.alt || '';
+      }
+      lbStage.appendChild(node);
+      lbCap.textContent = '';
+      lbCap.appendChild(caption(it,true));
+      $('#lbCount').textContent = (at+1)+' / '+current.length;
+      if(animate && dir) gsap.fromTo(node,{x:dir*46,opacity:0},{x:0,opacity:1,duration:.7,ease:'power3.out'});
+      [at-1,at+1].forEach(function(k){ var n = current[(k+current.length)%current.length]; if(n.type!=='video') new Image().src = n.src; });
+    }
+    function open(i){
+      lbOpen = true;
+      if(lenis) lenis.stop();
+      document.documentElement.style.overflow = 'hidden';
+      lb.showModal();
+      show(i,0);
+    }
+    function teardown(){
+      if(!lbOpen) return;
+      lbStage.textContent = '';
+      document.documentElement.style.overflow = '';
+      if(lenis) lenis.start();
+      lbOpen = false; dirty = true;
+    }
+    function shut(){ lb.close(); teardown(); }
+    // The close event is queued and can land after a quick reopen.
+    lb.addEventListener('close',function(){ if(!lb.open) teardown(); });
+    $('#lbClose').addEventListener('click',shut);
+    $('#lbPrev').addEventListener('click',function(){ show(at-1,-1); });
+    $('#lbNext').addEventListener('click',function(){ show(at+1,1); });
+    lb.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){ e.preventDefault(); shut(); return; }
+      if(e.target.tagName==='VIDEO') return;
+      if(e.key==='ArrowLeft') show(at-1,-1);
+      if(e.key==='ArrowRight') show(at+1,1);
+    });
+    var sx = null, sy = 0;
+    lbStage.addEventListener('pointerdown',function(e){ if(e.target.tagName==='VIDEO'){ sx=null; return; } sx=e.clientX; sy=e.clientY; });
+    lbStage.addEventListener('pointerup',function(e){
+      if(sx===null) return;
+      var dx = e.clientX-sx;
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(e.clientY-sy)) show(at+(dx<0?1:-1), dx<0?1:-1);
+      sx = null;
+    });
+
+    var layout = cols();
+    addEventListener('resize',function(){ if(cols()!==layout){ layout = cols(); render(); } });
+    render();
+  })();
+
+  var links = [].slice.call(document.querySelectorAll('nav ul a'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting) links.forEach(function(l){ l.classList.toggle('on', l.getAttribute('href')==='#'+e.target.id); });
+      });
+    },{rootMargin:'-50% 0px -50% 0px'});
+    links.forEach(function(l){ var t=$(l.getAttribute('href')); if(t) io.observe(t); });
+  }
+
+  measure(); size(true);
+  new ResizeObserver(function(){ measure(); dirty=true; }).observe(document.body);
+  addEventListener('resize', function(){ size(false); measure(); dirty=true; });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); if(ST) ST.refresh(); });
+
+  function beginIntro(){
+    if(reduce) return;
+    if(window.gsap) gsap.to(intro,{v:1,duration:3.6,ease:'power2.out',onUpdate:function(){dirty=true;}}); else intro.v=1;
+  }
+  if(gl){ cur = chapterAt(scrollY); want(); } else { intro.v=1; dawn=1; }
+  if(window.gsap){
+    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(function(){ frame(performance.now()); }, false, true);
+  } else {
+    (function loop(){ frame(performance.now()); requestAnimationFrame(loop); })();
+  }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Set the business WhatsApp number here, digits only with country code (for example 9715XXXXXXXX).
+  var WHATSAPP = '';
+  var f = {name:$('#name'), date:$('#date'), exp:$('#exp'), pax:$('#pax'), msg:$('#msg')};
+  var send = $('#send'), status = $('#status');
+  function compose(){
+    return 'Hello Desert Safari AUH, I would like to book the ' + f.exp.value +
+      ' for ' + (f.pax.value||'2') + ' guest(s)' +
+      (f.date.value ? ' on ' + f.date.value : '') + '.' +
+      (f.name.value ? ' Name: ' + f.name.value + '.' : '') +
+      (f.msg.value ? ' Notes: ' + f.msg.value : '');
+  }
+  function refresh(){
+    if(WHATSAPP){
+      send.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(compose());
+      send.textContent = 'Send on WhatsApp';
+      status.textContent = 'Your enquiry opens in WhatsApp, ready to send.';
+    } else {
+      send.textContent = 'Message on Instagram';
+      status.textContent = 'Copy your message, then paste it into our Instagram chat.';
+    }
+  }
+  Object.keys(f).forEach(function(k){ f[k].addEventListener('input', refresh); });
+  $('#form').addEventListener('submit', function(e){ e.preventDefault(); });
+  function clip(){
+    if(!navigator.clipboard) return Promise.reject();
+    return navigator.clipboard.writeText(compose());
+  }
+  $('#copy').addEventListener('click', function(){
+    clip().then(function(){ status.textContent = 'Message copied. Paste it into the chat.'; },
+      function(){ status.textContent = 'Copy was blocked. Select the details and send them manually.'; });
+  });
+  send.addEventListener('click', function(){ if(!WHATSAPP) clip().catch(function(){}); });
+  refresh();
+});
+</script>
