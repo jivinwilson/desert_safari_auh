@@ -8,14 +8,14 @@ Dimensions are the size Instagram displayed in the browser (first slide of a car
 
 | Current file | Scene | Source |
 |---|---|---|
-| `assets/sunrise*.webp` | Hero | Erg Chebbi, Morocco, CC BY-SA |
-| `assets/enter*.webp` | Into the dunes | Erg Chebbi, Morocco, CC BY-SA |
-| `assets/caravan*.webp` | Caravan, wide | Morocco, CC BY-SA |
-| `assets/riders*.webp` | Caravan, close | Morocco, CC BY-SA |
-| `assets/dusk*.webp` | Last light | Great Sand Dunes, USA, public domain |
-| `assets/tent*.webp` | Camp | Location not stated, CC0 |
-| `assets/fire*.webp` | Campfire | Wadi Rum, Jordan, CC BY-SA |
-| `assets/night*.webp` | Milky Way | Al Quaa, UAE, CC BY-SA |
+| `public/assets/sunrise*.webp` | Hero | Erg Chebbi, Morocco, CC BY-SA |
+| `public/assets/enter*.webp` | Into the dunes | Erg Chebbi, Morocco, CC BY-SA |
+| `public/assets/caravan*.webp` | Caravan, wide | Morocco, CC BY-SA |
+| `public/assets/riders*.webp` | Caravan, close | Morocco, CC BY-SA |
+| `public/assets/dusk*.webp` | Last light | Great Sand Dunes, USA, public domain |
+| `public/assets/tent*.webp` | Camp | Location not stated, CC0 |
+| `public/assets/fire*.webp` | Campfire | Wadi Rum, Jordan, CC BY-SA |
+| `public/assets/night*.webp` | Milky Way | Al Quaa, UAE, CC BY-SA |
 
 ## Candidates by scene
 
