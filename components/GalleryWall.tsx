@@ -1,58 +1,22 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react';
+import { useLayoutEffect, useRef, useState, type PointerEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GALLERY, type GalleryItem } from '@/lib/gallery';
 
-const WEIGHTS: Record<number, number[]> = { 1: [1], 2: [1.15, 1], 3: [1.25, 1, 1.1] };
-const colsFor = (w: number) => (w >= 1000 ? 3 : w >= 520 ? 2 : 1);
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lightbox = (open: boolean) => {
   document.documentElement.style.overflow = open ? 'hidden' : '';
   window.dispatchEvent(new CustomEvent('lightbox', { detail: open }));
 };
 
-type Block =
-  | { kind: 'group'; title: string }
-  | { kind: 'full' | 'large'; it: GalleryItem; flip: boolean }
-  | { kind: 'run'; cols: GalleryItem[][] };
-
-function layout(items: GalleryItem[], n: number): Block[] {
-  const out: Block[] = [], w = WEIGHTS[n];
-  let run: GalleryItem[] = [], group: string | undefined, splits = 0;
-  const flush = () => {
-    if (!run.length) return;
-    const cols: GalleryItem[][] = w.map(() => []), heights = w.map(() => 0);
-    for (const it of run) {
-      const k = heights.indexOf(Math.min(...heights));
-      cols[k].push(it);
-      heights[k] += (it.h / it.w) * w[k] + .22;
-    }
-    out.push({ kind: 'run', cols });
-    run = [];
-  };
-  for (const it of items) {
-    if (it.group && it.group !== group) {
-      flush();
-      group = it.group;
-      out.push({ kind: 'group', title: group });
-    }
-    if (it.feature) {
-      flush();
-      out.push({ kind: it.feature, it, flip: it.feature === 'large' && splits++ % 2 === 1 });
-    } else run.push(it);
-  }
-  flush();
-  return out;
-}
-
 function Caption({ it, full }: { it: GalleryItem; full: boolean }) {
   const meta = [it.date, it.location].filter(Boolean).join(' · ');
   return (
     <span className="g-cap">
       {it.category && <span className="g-cat">{it.category}</span>}
-      {it.title && <span className="g-title">{it.title}</span>}
+      <span className="g-title">{it.title || it.alt}</span>
       {full && it.description && <span className="g-desc">{it.description}</span>}
       {meta && <span className="g-meta">{meta}</span>}
     </span>
@@ -81,25 +45,14 @@ function Tile({ it, full, onOpen }: { it: GalleryItem; full: boolean; onOpen: ()
 }
 
 export default function Wall() {
-  const [active, setActive] = useState('All');
-  const [cols, setCols] = useState(3);
   const [at, setAt] = useState<number | null>(null);
   const wall = useRef<HTMLDivElement>(null);
-  const filters = useRef<HTMLDivElement>(null);
   const dlg = useRef<HTMLDialogElement>(null);
   const media = useRef<HTMLDivElement>(null);
   const dir = useRef(0);
   const swipe = useRef<{ x: number; y: number } | null>(null);
 
-  const current = active === 'All' ? GALLERY : GALLERY.filter((i) => i.category === active);
-  const cats = [...new Set(GALLERY.map((i) => i.category))];
-
-  useEffect(() => {
-    const fit = () => setCols(colsFor(innerWidth));
-    fit();
-    addEventListener('resize', fit);
-    return () => removeEventListener('resize', fit);
-  }, []);
+  const current = GALLERY;
 
   useLayoutEffect(() => {
     const el = wall.current!;
@@ -122,7 +75,7 @@ export default function Wall() {
       io.disconnect();
       ctx.revert();
     };
-  }, [active, cols]);
+  }, []);
 
   useLayoutEffect(() => {
     if (at === null || !dir.current || reduced() || !media.current) return;
@@ -133,23 +86,6 @@ export default function Wall() {
     }
     return () => void t.kill();
   }, [at, current]);
-
-  const pick = (c: string) => {
-    if (c === active) return;
-    const top = filters.current!.getBoundingClientRect().top + scrollY - 110;
-    const swap = () => {
-      setActive(c);
-      if (scrollY > top) scrollTo(0, top);
-    };
-    if (reduced()) return swap();
-    gsap.to(wall.current, {
-      opacity: 0, duration: .3, ease: 'power1.in',
-      onComplete: () => {
-        swap();
-        gsap.to(wall.current, { opacity: 1, duration: .6, ease: 'power2.out' });
-      },
-    });
-  };
 
   const show = (i: number, d: number) => {
     dir.current = d;
@@ -182,24 +118,10 @@ export default function Wall() {
           </div>
           <p className="sub rise">Photographs and films from our safaris around Abu Dhabi.</p>
         </div>
-        {cats.length > 1 && (
-          <div className="g-filters" ref={filters} role="group" aria-label="Filter gallery by category">
-            {['All', ...cats].map((c) => (
-              <button key={c} type="button" className="lnk" aria-pressed={c === active} onClick={() => pick(c)}>{c}</button>
-            ))}
-          </div>
-        )}
-        <div id="gWall" ref={wall}>
-          {layout(current, cols).map((b, i) =>
-            b.kind === 'group' ? <h3 key={i} className="g-group">{b.title}</h3>
-            : b.kind === 'run' ? (
-              <div key={i} className="g-run" style={{ gridTemplateColumns: WEIGHTS[cols].map((x) => `minmax(0,${x}fr)`).join(' ') }}>
-                {b.cols.map((col, k) => <div key={k} className="g-col">{col.map((x) => <div key={x.src}>{tile(x, false)}</div>)}</div>)}
-              </div>
-            ) : (
-              <div key={i} className={b.kind === 'full' ? 'g-full' : `g-split${b.flip ? ' flip' : ''}`}>{tile(b.it, true)}</div>
-            ),
-          )}
+        <div id="gWall" ref={wall} className="story">
+          {GALLERY.map((x, i) => (
+            <div key={x.src} className={`g-split${i % 2 ? ' flip' : ''}`}>{tile(x, true)}</div>
+          ))}
         </div>
       </div>
 

@@ -16,23 +16,13 @@ function W({ t, from = 0 }: { t: string; from?: number }) {
   ));
 }
 
-const CREDITS = [
-  ['Caravan: Merzougaloisirs', 'Cavalier_de_chameaux_au_passage_dans_une_dune_de_sable_au_Maroc.jpg', 'CC BY-SA 4.0'],
-  ['Riders: Fbrandao.1963', 'Vacations_-_Camel_ride_in_Sahara_Desert_(Morroco).jpg', 'CC BY-SA 4.0'],
-  ['Last light: NPS / Debra Miller, Great Sand Dunes', 'Dunes_at_sunset_along_the_southern_edge_of_the_dune_field_in_Great_Sand_Dunes_National_Park._NPS-Debra_Miller_(18659276586).jpg', 'public domain'],
-  ['Tent: Cindy Chen', 'Glamping_(Unsplash).jpg', 'CC0'],
-  ['Campfire: twiga-swala, Wadi Rum', 'Bedouin_Campfire_Conversations,_Wadi_Rum.jpg', 'CC BY-SA 2.0'],
-  ['Milky Way: Chrdoerr, Al Quaa', 'Mesmerising_natural_beauty_-_the_milky_way_and_the_desert_at_Al_Quaa.jpg', 'CC BY-SA 4.0'],
-];
-const commons = (file: string) => `https://commons.wikimedia.org/wiki/File:${file}`;
-
 const HERO = { as: 'image', type: 'image/webp', fetchPriority: 'high' } as const;
 
 export default function Home() {
   // Matches tierSuffix() in lib/journey.ts so the hero texture is fetched once.
-  preload('/assets/sunrise-m.webp', { ...HERO, media: '(max-width:819px)' });
-  preload('/assets/sunrise-l.webp', { ...HERO, media: '(min-width:820px) and (max-width:1333px), (min-width:820px) and (max-width:2000px) and (max-resolution:1.49dppx)' });
-  preload('/assets/sunrise.webp', { ...HERO, media: '(min-width:1334px) and (min-resolution:1.5dppx), (min-width:2001px)' });
+  preload('/assets/morning-m.webp', { ...HERO, media: '(max-width:819px)' });
+  preload('/assets/morning-l.webp', { ...HERO, media: '(min-width:820px) and (max-width:1333px), (min-width:820px) and (max-width:2000px) and (max-resolution:1.49dppx)' });
+  preload('/assets/morning.webp', { ...HERO, media: '(min-width:1334px) and (min-resolution:1.5dppx), (min-width:2001px)' });
   return (
     <>
       <Journey />
@@ -92,7 +82,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="why" data-img="2" data-at="15:30" data-name="The caravan">
+        <section id="why" data-img="2" data-at="15:30" data-name="Sandboarding">
           <div className="beat" style={h('200svh')} data-dim=".24">
             <div className="frame tr">
               <div className="copy">
@@ -111,7 +101,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experiences" data-img="3" data-at="16:15" data-name="The caravan">
+        <section id="experiences" data-img="3" data-at="16:15" data-name="Camels">
           <div className="beat" style={h('130svh')}><div className="frame" /></div>
           <div className="block" data-dim=".66">
             <div className="inner">
@@ -150,7 +140,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section data-img="5" data-at="18:30" data-name="The camp">
+        <section data-img="5" data-at="18:30" data-name="Golden hour">
           <div className="beat" style={h('190svh')}>
             <div className="frame tr">
               <div className="copy">
@@ -171,7 +161,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section data-img="6" data-at="20:30" data-name="The fire">
+        <section data-img="6" data-at="20:30" data-name="Fire show">
           <div className="beat" style={h('190svh')}>
             <div className="frame tr">
               <div className="copy">
@@ -183,7 +173,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section data-img="7" data-at="21:10" data-name="Under the stars">
+        <section data-img="7" data-at="21:10" data-name="Nightfall">
           <div className="beat" style={h('230svh')}>
             <div className="frame c">
               <div className="copy">
@@ -245,13 +235,7 @@ export default function Home() {
         <details>
           <summary>Photo credits</summary>
           <ul>
-            <li>
-              Sunrise and ridge: Thomas Fuhrmann, Erg Chebbi, <a href={commons('Erg_Chebbi_sunset.jpg')} target="_blank" rel="noopener">1</a>,{' '}
-              <a href={commons('Erg_Chebbi_in_the_evening_light.jpg')} target="_blank" rel="noopener">2</a>, CC BY-SA 4.0
-            </li>
-            {CREDITS.map(([who, file, lic]) => (
-              <li key={file}>{who}, <a href={commons(file)} target="_blank" rel="noopener">source</a>, {lic}</li>
-            ))}
+            <li>Desert and guest photographs: Nadeem Irani, <a href="https://www.instagram.com/desert_safari_auh/" target="_blank" rel="noopener">@desert_safari_auh</a>, used with permission</li>
             <li>All photographs resized and colour-graded for this site.</li>
           </ul>
         </details>

@@ -27,7 +27,7 @@ em{font-style:italic}
 .w{display:inline-block}
 
 /* The camera */
-#stage{position:fixed;inset:0 0 auto 0;height:100lvh;z-index:0;overflow:hidden;background:#3a1a0c center 22%/cover no-repeat url("data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAAAQCACdASowACAAPtlYpEyoJSOiNVgIAQAbCWYAnTKDOB2gf16X/cd4BpjTezrhEtsA7IAWG9f2+KPNlaqRk5r155yz6cuJ73YwAP3c1ox3eImcsXgz0yQWAxRDy7uPrpIX0DRnoFr0FUj55b93mhZVe5Y2BytwUnTsZyMWHZcLS/5yUqlVbRcrlmP/3HPg7j65wQMvLjU4bceTgLrj/mrjQPWaOcRbB69BfKMLzAbF2pG0Rm/VSJEvlGMoKI4Fxc397BiRj0scH8W9h9/ecU41OMwzF/5Ca3uZIQlvGgz1cExjfhQ3ig3PMGbbW82BbkPjAuAqqgj4i0R/64OtQN3HqyQ9KZD3rYTjRKpqYz1qAAAA")}
+#stage{position:fixed;inset:0 0 auto 0;height:100lvh;z-index:0;overflow:hidden;background:#3a1a0c center 55%/cover no-repeat url("data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAABwBgCdASogACgAPt1iqlAopSOiqrgKARAbiWIAnTLChXfHHjuO85NkIh8TKOxFlobYNTog06Le9kA0HgAA/oMcIStrajUrCYVt4+deF34oNW3z43m1I7jsmuFUdNStL9lb9sST0jfxq1eoPxM/tlLEWCgg2Iu6hVrdlvw/+QwlgQs0fXE5iKHbkKuI5r7fN4/qJbjCP1CyndJfyrFuGhcCVITRw98QTJloBJZYlFBSoL1dEATzoD4h22h2al8slHzWec5R+mJ4v7B1tdOYndyVZ+F/nwSyXz2GvITU/+fEnjJUDyOSzfH6oCmYnPUkAAA=")}
 #gl,#motes{position:absolute;inset:0;width:100%;height:100%;display:block}
 #motes{pointer-events:none}
 #stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
@@ -175,6 +175,34 @@ h2.giant{font-size:clamp(5rem,19vw,19rem);letter-spacing:-.03em;line-height:.9}
 .follow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(22px,4vw,60px);align-items:center;padding-block:clamp(30px,6vh,56px);border-block:1px solid var(--line)}
 .follow svg{width:clamp(44px,5vw,64px);height:auto;color:var(--gold)}
 .follow p{margin-top:10px;max-width:52ch;font-weight:300}
+/* Gallery as one continuous story: photos dissolve into the night instead of sitting in boxes. */
+.story{display:grid;gap:clamp(40px,10vh,120px)}
+.story .g-frame{background:transparent;-webkit-mask-image:linear-gradient(to right,transparent,#000 18%,#000 82%,transparent),linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 18%,#000 82%,transparent),linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent);mask-composite:intersect}
+.story .g-split:nth-child(odd){margin-right:8%}
+.story .g-split:nth-child(even){margin-left:8%}
+.story .g-split .g-frame{max-height:86svh}
+.story .g-split .g-title{font-size:clamp(1.8rem,3.2vw,3rem)}
+/* Photos tilt up from depth as they scroll in; runs on the compositor, no JavaScript. */
+@supports (animation-timeline:view()){
+  .g-run .g-frame,.g-split .g-frame{animation:tilt-in linear both;animation-timeline:view();animation-range:entry 0% cover 45%;transform-origin:50% 100%}
+  @keyframes tilt-in{from{transform:perspective(1100px) rotateX(16deg) translateY(48px) scale(.93)}to{transform:perspective(1100px)}}
+}
+/* Each story photo enters with its own move, cycling through five; transform and opacity only, so it stays smooth. */
+@supports (animation-timeline:view()){
+  .story .g-split .g-frame{animation-timeline:view();animation-range:entry 0% cover 45%;animation-fill-mode:both;animation-timing-function:linear}
+  .story .g-split:nth-child(5n+1) .g-frame{animation-name:st-rise}
+  .story .g-split:nth-child(5n+2) .g-frame{animation-name:st-swing-l}
+  .story .g-split:nth-child(5n+3) .g-frame{animation-name:st-zoom}
+  .story .g-split:nth-child(5n+4) .g-frame{animation-name:st-swing-r}
+  .story .g-split:nth-child(5n) .g-frame{animation-name:st-drift}
+  .story .g-split .g-cap{animation:st-cap linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+  @keyframes st-rise{from{opacity:0;transform:perspective(1100px) rotateX(18deg) translateY(70px) scale(.92)}to{opacity:1;transform:perspective(1100px)}}
+  @keyframes st-swing-l{from{opacity:0;transform:perspective(1200px) rotateY(24deg) translateX(-90px)}to{opacity:1;transform:perspective(1200px)}}
+  @keyframes st-zoom{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:none}}
+  @keyframes st-swing-r{from{opacity:0;transform:perspective(1200px) rotateY(-24deg) translateX(90px)}to{opacity:1;transform:perspective(1200px)}}
+  @keyframes st-drift{from{opacity:0;transform:translateY(110px) rotate(-3deg) scale(.95)}to{opacity:1;transform:none}}
+  @keyframes st-cap{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+}
 @media (max-width:760px){
   .follow{grid-template-columns:minmax(0,1fr)}
   .g-split .g-tile,.g-split.flip .g-tile{grid-template-columns:minmax(0,1fr)}

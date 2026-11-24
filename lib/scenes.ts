@@ -18,14 +18,14 @@ export type Scene = {
 
 // h: horizon (from top). k: ground dolly strength. vx: vanishing point. kind: 0 day, 1 firelight, 2 stars.
 export const SCENES: Scene[] = [
-  { n: 'sunrise', hy: .19, h: .245, vx: .32, f0: [.34, .5], f1: [.33, .44], z: [1.0, 1.05], k: [0, .75], exp: 1.03, tint: [1, .97, .92], haze: .8, shim: 1, kind: 0, dust: 1 },
-  { n: 'enter', h: .24, vx: .76, f0: [.6, .56], f1: [.72, .42], z: [1.02, 1.14], k: [0, .95], exp: .98, tint: [1, .96, .9], haze: .7, shim: 1, kind: 0, dust: 1 },
-  { n: 'caravan', h: .22, vx: .6, f0: [.36, .55], f1: [.63, .68], z: [1.03, 1.62], k: [0, .08], exp: .98, tint: [1, .96, .9], haze: .55, shim: .6, kind: 0, dust: 1 },
-  { n: 'riders', h: .2, vx: .5, f0: [.45, .52], f1: [.6, .52], z: [1.1, 1.2], k: [0, .06], exp: .96, tint: [1, .95, .87], haze: .5, shim: 1, kind: 0, dust: .7 },
-  { n: 'dusk', h: .16, vx: .55, f0: [.5, .55], f1: [.55, .45], z: [1.0, 1.1], k: [0, .5], exp: .9, tint: [1, .9, .8], haze: .35, shim: .3, kind: 0, dust: .4 },
-  { n: 'tent', h: .8, vx: .62, f0: [.6, .62], f1: [.62, .66], z: [1.03, 1.24], k: [0, .1], exp: 1, tint: [1, .99, .97], haze: 0, shim: 0, kind: 1, dust: 0 },
-  { n: 'fire', h: .9, vx: .4, f0: [.42, .7], f1: [.38, .74], z: [1.03, 1.14], k: [0, .05], exp: 1, tint: [1, .98, .94], haze: 0, shim: 0, kind: 1, ember: 1 },
-  { n: 'night', h: .87, vx: .5, f0: [.6, .55], f1: [.6, .48], z: [1.04, 1.12], k: [0, .2], exp: 1.08, tint: [.97, .98, 1.04], haze: 0, shim: 0, kind: 2 },
+  { n: 'morning', h: .5, vx: .62, f0: [.55, .55], f1: [.55, .5], z: [1.0, 1.06], k: [0, .35], exp: 1, tint: [1, 1, 1], haze: .3, shim: .6, kind: 0, dust: .6 },
+  { n: 'drive', h: .3, vx: .5, f0: [.5, .55], f1: [.55, .55], z: [1.0, 1.12], k: [0, .4], exp: 1, tint: [1, 1, 1], haze: .3, shim: .5, kind: 0, dust: 1 },
+  { n: 'friends', h: .2, vx: .6, f0: [.6, .58], f1: [.64, .62], z: [1.0, 1.08], k: [0, .05], exp: 1, tint: [1, 1, 1], haze: .2, shim: 0, kind: 0, dust: .8 },
+  { n: 'camel', h: .9, vx: .5, f0: [.5, .62], f1: [.52, .6], z: [1.04, 1.14], k: [0, 0], exp: 1, tint: [1, 1, 1], haze: 0, shim: 0, kind: 0, dust: .3 },
+  { n: 'golden', h: .4, vx: .6, f0: [.5, .45], f1: [.5, .5], z: [1.0, 1.08], k: [0, .45], exp: 1, tint: [1, .98, .95], haze: .4, shim: .5, kind: 0, dust: .5 },
+  { n: 'evening', h: .72, vx: .5, f0: [.5, .5], f1: [.5, .46], z: [1.0, 1.08], k: [0, .2], exp: .96, tint: [1, .96, .94], haze: .2, shim: .3, kind: 0, dust: .3 },
+  { n: 'fireshow', h: .85, vx: .4, f0: [.45, .42], f1: [.45, .38], z: [1.0, 1.08], k: [0, 0], exp: 1, tint: [1, 1, 1], haze: 0, shim: 0, kind: 1, ember: 1 },
+  { n: 'nightfire', h: .9, vx: .5, f0: [.5, .35], f1: [.5, .3], z: [1.02, 1.1], k: [0, 0], exp: 1, tint: [1, 1, 1], haze: 0, shim: 0, kind: 1, ember: .8 },
 ];
 
 export const VERT = 'attribute vec2 a;varying vec2 v;void main(){v=vec2(a.x*.5+.5,.5-a.y*.5);gl_Position=vec4(a,0.,1.);}';
