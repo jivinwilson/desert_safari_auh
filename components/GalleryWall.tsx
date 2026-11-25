@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GALLERY, type GalleryItem } from '@/lib/gallery';
 
+const xl = (s: string) => s.replace(/\.webp$/, '-xl.webp');
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lightbox = (open: boolean) => {
   document.documentElement.style.overflow = open ? 'hidden' : '';
@@ -82,7 +83,7 @@ export default function Wall() {
     const t = gsap.fromTo(media.current, { x: dir.current * 46, opacity: 0 }, { x: 0, opacity: 1, duration: .7, ease: 'power3.out' });
     for (const k of [at - 1, at + 1]) {
       const n = current[(k + current.length) % current.length];
-      if (n.type !== 'video') new Image().src = n.src;
+      if (n.type !== 'video') new Image().src = xl(n.src);
     }
     return () => void t.kill();
   }, [at, current]);
@@ -159,7 +160,7 @@ export default function Wall() {
           {it && (it.type === 'video'
             ? <video key={it.src} src={it.src} poster={it.poster} controls playsInline preload="metadata" aria-label={it.title || it.alt} />
             // eslint-disable-next-line @next/next/no-img-element -- full-size original in a contain box
-            : <img key={it.src} src={it.src} alt={it.alt} />)}
+            : <img key={it.src} src={xl(it.src)} alt={it.alt} />)}
         </div>
         <div className="lb-bar">
           <div className="lb-cap" aria-live="polite">{it && <Caption it={it} full />}</div>

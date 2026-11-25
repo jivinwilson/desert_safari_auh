@@ -27,7 +27,7 @@ em{font-style:italic}
 .w{display:inline-block}
 
 /* The camera */
-#stage{position:fixed;inset:0 0 auto 0;height:100lvh;z-index:0;overflow:hidden;background:#3a1a0c center 55%/cover no-repeat url("data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAABwBgCdASogACgAPt1iqlAopSOiqrgKARAbiWIAnTLChXfHHjuO85NkIh8TKOxFlobYNTog06Le9kA0HgAA/oMcIStrajUrCYVt4+deF34oNW3z43m1I7jsmuFUdNStL9lb9sST0jfxq1eoPxM/tlLEWCgg2Iu6hVrdlvw/+QwlgQs0fXE5iKHbkKuI5r7fN4/qJbjCP1CyndJfyrFuGhcCVITRw98QTJloBJZYlFBSoL1dEATzoD4h22h2al8slHzWec5R+mJ4v7B1tdOYndyVZ+F/nwSyXz2GvITU/+fEnjJUDyOSzfH6oCmYnPUkAAA=")}
+#stage{position:fixed;inset:0 0 auto 0;height:100lvh;z-index:0;overflow:hidden;background:#3a1a0c center 55%/cover no-repeat url("data:image/webp;base64,UklGRhoBAABXRUJQVlA4IA4BAACQBwCdASooABsAPtlWo0yoJKMiMBqtUQAbCWYAnTNr+I5qgU8BAZWUu6F42Y/XH0jWibNBRTy+sROrk3Wo16mg5SgOlQAA/vnBBlrFp1OCk/alkmyUVyeNlLluIcOwTfeUme2nabCKKtEB+KJ4v0cwQ2aFpt000Q8WWwrqaH60rtEct3qkZclNMuTgBycdFGD+Z5Rqjjz+3BQFpdQvUePT6xjZuJ80CKhWXuFUsK1IyLLDGNOvAw+uYDtKTw8JFDS/HRcxMAMrW3CmIBpHX4zS74hv/2z+od4MwdaGEt+yvmfcjsYX3T/W8Z0k5tfM0iGEj5IdIwTCyzYt6WwcOrPc6mhfS0Wj4XT8bjQoAAA=")}
 #gl,#motes{position:absolute;inset:0;width:100%;height:100%;display:block}
 #motes{pointer-events:none}
 #stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}

@@ -18,7 +18,7 @@ export type Scene = {
 
 // h: horizon (from top). k: ground dolly strength. vx: vanishing point. kind: 0 day, 1 firelight, 2 stars.
 export const SCENES: Scene[] = [
-  { n: 'morning', h: .5, vx: .62, f0: [.55, .55], f1: [.55, .5], z: [1.0, 1.06], k: [0, .35], exp: 1, tint: [1, 1, 1], haze: .3, shim: .6, kind: 0, dust: .6 },
+  { n: 'morning', h: .5, vx: .62, f0: [.62, .6], f1: [.62, .56], z: [1.0, 1.06], k: [0, .15], exp: 1, tint: [1, 1, 1], haze: .3, shim: .6, kind: 0, dust: .6 },
   { n: 'drive', h: .3, vx: .5, f0: [.5, .55], f1: [.55, .55], z: [1.0, 1.12], k: [0, .4], exp: 1, tint: [1, 1, 1], haze: .3, shim: .5, kind: 0, dust: 1 },
   { n: 'friends', h: .2, vx: .6, f0: [.6, .58], f1: [.64, .62], z: [1.0, 1.08], k: [0, .05], exp: 1, tint: [1, 1, 1], haze: .2, shim: 0, kind: 0, dust: .8 },
   { n: 'camel', h: .9, vx: .5, f0: [.5, .62], f1: [.52, .6], z: [1.04, 1.14], k: [0, 0], exp: 1, tint: [1, 1, 1], haze: 0, shim: 0, kind: 0, dust: .3 },
